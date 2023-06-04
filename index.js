@@ -29,7 +29,7 @@ for (const file of commandFiles) {
 client.on(Events.InteractionCreate, async interaction => {
     if (!interaction.isCommand()) return;
 	try{
-    await client.commands.get(interaction.commandName).execute(interaction);
+    await client.commands.get(interaction.commandName).execute(interaction, client);
 	}
 	catch(err){
 		console.log(err);
@@ -37,12 +37,11 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 });
 
+
 client.once(Events.ClientReady, (client) => {
     console.log(`Logged in as ${client.user.tag}!`);
 	connectDB(process.env.MONGO_URI);
 });
-
-
 
 
 client.login(TOKEN);

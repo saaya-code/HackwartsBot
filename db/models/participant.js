@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const participant = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
     discordId: {
         type: String,
         required: true,
