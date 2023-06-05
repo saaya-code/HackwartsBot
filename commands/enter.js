@@ -133,10 +133,10 @@ module.exports = {
                 await channel.send({ content: `${member}`, embeds: [announcementEmbed] });
                 const teammates = await interaction.options._hoistedOptions.filter(option => option.type == 6);
                 for (let teammate of teammates){
-                    if(teammate.roles.cache.some(filter)){
-                        continue;
-                    }
                     const teammateMember = await interaction.guild.members.cache.get(teammate.value);
+                    if(teammateMember.roles.cache.some(filter))
+                        continue;
+                    else{
                     await teammateMember.roles.add(generalRole);
                     await teammateMember.roles.add(role);
                     const teammateDescriptionMessage = await interaction.options.getString('team') ? `${teammateMember} has joined the event under **${house.name}'s house**! They are on team **${interaction.options.getString('team')}**!` : `${teammateMember} has joined the event under **${house.name}'s house**!`;
@@ -147,6 +147,7 @@ module.exports = {
                         .setThumbnail(house.image)
                         .setFooter({ text: 'Hackworts 2023', iconURL: 'https://www.pngfind.com/pngs/m/9-96915_logo-hogwarts-png-harry-potter-house-symbol-transparent.png', });
                     await channel.send({ content: `${teammateMember}`, embeds: [teammateAnnouncementEmbed], ephemeral: true });
+                }
                 }
                 const teamName = interaction.options.getString('teamname');
                 const team = [member.id];
