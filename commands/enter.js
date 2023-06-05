@@ -161,7 +161,7 @@ module.exports = {
                         house: house.name,
                         name: await interaction.guild.members.cache.get(member).displayName,
                     });
-                    //await newParticipant.save();
+                    newParticipant.save();
                     
                 }
                 const newTeam = new Team({
@@ -169,7 +169,7 @@ module.exports = {
                     members: team,
                     challenges: [],
                 });
-                //await newTeam.save();
+                newTeam.save();
                 //create team role
                 const teamRole = await interaction.guild.roles.create({
                     name: teamName,
