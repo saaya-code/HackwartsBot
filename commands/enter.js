@@ -161,7 +161,7 @@ module.exports = {
                         house: house.name,
                         name: await interaction.guild.members.cache.get(member).displayName,
                     });
-                    newParticipant.save();
+                    //newParticipant.save();
                     console.log("Participant saved to database : "+newParticipant.name);
                     
                 }
@@ -170,7 +170,7 @@ module.exports = {
                     members: team,
                     challenges: [],
                 });
-                newTeam.save();
+                //newTeam.save();
                 console.log("Team saved to database : "+newTeam);
                 //create team role
                 const teamRole = await interaction.guild.roles.create({
