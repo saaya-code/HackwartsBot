@@ -6,6 +6,7 @@ module.exports = {
         .setName('announce')
         .setDescription('Announce a message to a channel'),
     async execute(interaction) {
+        if(!interaction.member.permissions.has('ADMINISTRATOR')) return interaction.reply('You do not have permission to use this command!', { ephemeral: true });
         const embed = new EmbedBuilder()
             .setTitle('Welcome to Hackwarts!')
             .setDescription('Welcome, aspiring wizards and witches, to the magical world of coding and innovation!\n Step into the enchanting realm of the Harry Potter Hackathon, where your skills will be put to the ultimate test\n click </enter:1114534497564762182> to enter the magical world of Hackwarts!\nArole and a private voice channel will be created under your house\'s category for you and your teammates.')
