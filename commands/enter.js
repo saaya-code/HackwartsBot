@@ -16,23 +16,23 @@ module.exports = {
         .setDescription('Join the Hackwarts!')
         .addStringOption(option =>
             option.setName('teamname')
-                .setDescription('Enter your teammate\'s name here!')
+                .setDescription('Enter your Team\'s name here!')
                 .setRequired(true))
         .addUserOption(option =>
                         option.setName('team1')
-                            .setDescription('Enter your teammate\'s name here!')
+                            .setDescription('Enter your first Teammate\'s name here!')
                             .setRequired(false))
         .addUserOption(option =>
                         option.setName('team2')
-                        .setDescription('Enter your teammate\'s name here!')
+                        .setDescription('Enter your second teammate\'s name here!')
                         .setRequired(false))
         .addUserOption(option =>
                         option.setName('team3')
-                            .setDescription('Enter your teammate\'s name here!')
+                            .setDescription('Enter your third teammate\'s name here!')
                             .setRequired(false))
         .addUserOption(option =>
                         option.setName('team4')
-                            .setDescription('Enter your teammate\'s name here!')
+                            .setDescription('Enter your fourth teammate\'s name here!')
                             .setRequired(false)),
     async execute(interaction, client) {
         try{
@@ -121,10 +121,9 @@ module.exports = {
                 .setColor(house.color)
                 .setThumbnail(house.image)
                 .setFooter({ text: 'Hackworts 2023', iconURL: 'https://www.pngfind.com/pngs/m/9-96915_logo-hogwarts-png-harry-potter-house-symbol-transparent.png', });
-            await interaction.channel.send({ embeds: [embed], ephemeral: true });
+            await interaction.reply({ embeds: [embed], ephemeral: true });
             const channel = await interaction.guild.channels.cache.get(eventAnnouncementChannelID);
             const descriptionMessage = await interaction.options.getString('team') ? `${member} has joined the event under **${house.name}'s house**! They are on team **${interaction.options.getString('team')}**!` : `${member} has joined the event under **${house.name}'s house**!`;
-            await interaction.reply({ content: 'You have been entered into the event!', ephemeral: true });
             const announcementEmbed = new EmbedBuilder()
                 .setTitle('New Student!')
                 .setDescription(descriptionMessage)
@@ -159,6 +158,7 @@ module.exports = {
                         discordId: member,
                         team: teamName,
                         house: house.name,
+                        name: await interaction.guild.members.cache.get(member).displayName,
                     });
                     //await newParticipant.save();
                     
