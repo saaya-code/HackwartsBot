@@ -188,7 +188,7 @@ module.exports = {
                 id: GUILD.roles.everyone,
                 deny: [PermissionFlagsBits.Connect],
             },{
-                id: '398147766687236107',
+                id: teamRole.id,
                 allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.Connect],
             }
             ]})
