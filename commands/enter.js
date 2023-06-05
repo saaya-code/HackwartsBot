@@ -162,6 +162,7 @@ module.exports = {
                         name: await interaction.guild.members.cache.get(member).displayName,
                     });
                     newParticipant.save();
+                    console.log("Participant saved to database : "+newParticipant.name);
                     
                 }
                 const newTeam = new Team({
@@ -170,6 +171,7 @@ module.exports = {
                     challenges: [],
                 });
                 newTeam.save();
+                console.log("Team saved to database : "+newTeam);
                 //create team role
                 const teamRole = await interaction.guild.roles.create({
                     name: teamName,
