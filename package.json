@@ -1,7 +1,7 @@
 {
   "name": "hackworts-bot",
   "version": "1.0.0",
-  "description": "",
+  "description": "hello ",
   "main": "index.js",
   "scripts": {
     "start": "node deploy.js && node index.js",
