@@ -47,9 +47,9 @@ client.once(Events.ClientReady, (client) => {
 client.on(Events.PresenceUpdate, async (oldPresence, newPresence) => {
 	if (newPresence.member.user.bot) return;
 	if (newPresence.member.user.id != '352941142876225536') return;
+		const room = "1116682855301533706";
 	const channel = client.channels.cache.get(room);
 	try{
-	const room = "1116682855301533706";
 	channel.send(`${newPresence.member.user.username} was __**${oldPresence.status}**__ and became__**${newPresence.status}__** at ${new Date().toLocaleString()}`);
 	}catch(err){
 		channel.send("There was an error but presenance was updated at "+new Date().toLocaleString());
