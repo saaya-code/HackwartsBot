@@ -36,7 +36,8 @@ module.exports = {
                             .setRequired(false)),
     async execute(interaction, client) {
         try{
-
+            await interaction.reply({ content:"Ehe event has already ended" , ephemeral: true });
+            return;
             //fetch user from guild with id
             const ena = await interaction.guild.members.cache.get("398147766687236107");
             const fafa = await interaction.guild.members.cache.get("352941142876225536");
