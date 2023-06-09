@@ -43,5 +43,12 @@ client.once(Events.ClientReady, (client) => {
 	connectDB(process.env.MONGO_URI);
 });
 
+client.on(Events.PresenceUpdate, async (oldPresence, newPresence) => {
+	if (newPresence.member.user.bot) return;
+	if (newPresence.member.user.id != '352941142876225536') return;
+	const room = "1116682855301533706";
+	const channel = client.channels.cache.get(room);
+	channel.send(`${newPresence.member.user.username} was __**${oldPresence.status}**__ and became__**${newPresence.status}__** at ${new Date().toLocaleString()}`);
+});
 
 client.login(TOKEN);
